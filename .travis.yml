@@ -31,3 +31,10 @@ after_success:
   - docker push hiepnnt/udagram-api-user:v1
   - docker push hiepnnt/udagram-frontend:v1
   - docker push hiepnnt/reverseproxy:v1
+
+after_success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push hiepnnt/udagram-api-feed:v1
+  - docker push hiepnnt/udagram-api-user:v1
+  - docker push hiepnnt/udagram-frontend:v1
+  - docker push hiepnnt/reverseproxy:v1
