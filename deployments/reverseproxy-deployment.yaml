@@ -5,14 +5,17 @@ metadata:
     service: reverseproxy
   name: reverseproxy
 spec:
-  replicas: 1
+  replicas: 2
+  selector:
+    matchLabels:
+      service: reverseproxy
   template:
     metadata:
       labels:
         service: reverseproxy
     spec:
       containers:
-      - image: hiepnnt/udagram-reverseproxy
+      - image: hiepnnt/reverseproxy:v1
         name: reverseproxy
         imagePullPolicy: Always          
         resources:

@@ -5,7 +5,7 @@ metadata:
     service: backend-feed
   name: backend-feed
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       service: backend-feed
@@ -15,15 +15,15 @@ spec:
         service: backend-feed
     spec:
       containers:
-      - image: hiepnnt/udagram-api-feed
+      - image: hiepnnt/udagram-api-feed:v1
         name: backend-feed
         imagePullPolicy: Always
         resources:
           requests:
-            memory: "512Mi"
-            cpu: "150m"
+            memory: "100Mi"
+            cpu: "250m"
           limits:
-            memory: "1024Mi"
+            memory: "300Mi"
             cpu: "300m"
         env:
         - name: URL
@@ -46,11 +46,6 @@ spec:
             configMapKeyRef:
               name: env-config
               key: AWS_REGION
-        - name: JWT_SECRET
-          valueFrom:
-            configMapKeyRef:
-              name: env-config
-              key: JWT_SECRET
         - name: POSTGRES_DB
           valueFrom:
             configMapKeyRef:
@@ -75,8 +70,8 @@ spec:
         - name: aws-secret
           mountPath: "/root/.aws/"
           readOnly: true
-        restartPolicy: Always
-        volumes:
+      restartPolicy: Always
+      volumes:
         - name: aws-secret
           secret:
             secretName: aws-secret
