@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: ConfigMap
 data:
-  AWS_BUCKET: udagram-bucket-hiepnnt
+  AWS_BUCKET: pj3
   AWS_PROFILE: default
   AWS_REGION: us-east-1
-  POSTGRES_DB: postgres
-  POSTGRES_HOST: db-hiep.cfaeuvgjij6e.us-east-1.rds.amazonaws.com
+  POSTGRES_DB: pj3
+  POSTGRES_HOST: pj3.cx9qygbkwrge.us-east-1.rds.amazonaws.com
   URL: http://localhost:8100
 metadata:
   name: env-config
